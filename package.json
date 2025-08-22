@@ -1,9 +1,20 @@
 {
   "name": "vue-reload",
-  "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "version": "1.0.0",
   "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "types": "dist/index.d.ts",
+  "module": "dist/index.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "start": "vite",
     "test": "vitest",
