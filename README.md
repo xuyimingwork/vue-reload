@@ -48,3 +48,9 @@ then, you can just call `$reload()` in any non root component template, like:
   <button @click="reload()">reload</button>
 </template>
 ```
+
+## Next
+
+- [ ] add support for vue2
+- [ ] support reload child component
+  - since setup component has closed instance, `$reload` is not exposed, so we can't just use `$refs.xxx.$reload`: https://github.com/vuejs/core/pull/5022#issuecomment-1113325348
