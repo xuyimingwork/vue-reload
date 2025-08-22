@@ -1,10 +1,10 @@
 # vue-reload
 
-reload current component.
+reload current vue component
 
 ## Install
 
-```bash
+```sh
 pnpm i vue-reload
 # or
 npm i vue-reload
@@ -30,8 +30,6 @@ app.mount('#app')
 ```
 
 then, you can just call `$reload()` in any non root component template, like:
-
-HelloWorld.vue
 
 ```vue
 <template>
