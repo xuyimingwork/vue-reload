@@ -19,7 +19,6 @@ export function createReload(): Plugin {
 
 export function useReload(ref?: Ref | ComputedRef) {
   const instance = getCurrentInstance()
-  console.log('use', instance, instance?.proxy, instance?.proxy?.$root, instance?.proxy?.$parent)
   if (!ref) return () => reload(instance?.proxy)
   return () => reload(() => ref.value?.$?.proxy)
 }

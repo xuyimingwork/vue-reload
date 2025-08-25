@@ -8,7 +8,7 @@ export function reload(maybeGetInstance?: any) {
   if (!instance) return Promise.resolve()
   if (!instance.$ || !instance.$.vnode) return Promise.resolve()
   if (!instance.$parent) return Promise.resolve()
-  instance.$.vnode.key = Symbol('refresh')
+  instance.$.vnode.key = Symbol ? Symbol('reload') : 'reload'
   instance.$parent.$forceUpdate()
   return nextTick()
 }
