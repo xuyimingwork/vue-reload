@@ -31,6 +31,32 @@ test('plugin', async () => {
   expect(init).toBeCalledTimes(2)
 })
 
+test('plugin invalid this', async () => {
+  const data = { init: () => {} }
+  const init = vi.spyOn(data, 'init')
+  expect(init).not.toBeCalled()
+  const wrapper = mount({
+    template: '<NeedReload ref="refNeedReload" />',
+    components: {
+      NeedReload: {
+        template: `
+          <button id="b1" @click="$reload">need reload</button>
+          <button id="b2" @click="$reload()">need reload</button>
+        `,
+        setup() {
+          data.init()
+        }
+      }
+    }
+  }, { global: { plugins: [createReload()] } })
+  expect(init).toBeCalled()
+  // # click b1 not work, because b1's this is not valid
+  await wrapper.find('#b1').trigger('click')
+  expect(init).toBeCalledTimes(1)
+  await wrapper.find('#b2').trigger('click')
+  expect(init).toBeCalledTimes(2)
+})
+
 test('useReload', async () => {
   const data = { init: () => {} }
   const init = vi.spyOn(data, 'init')
