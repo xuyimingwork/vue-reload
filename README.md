@@ -68,6 +68,10 @@ then, you can just call `$reload()` in any component template, like:
 
 ## Next
 
-- [ ] add support for vue2
+- [ ] add support for vue2? code like: 
+  ```js
+  this.$vnode.key = Symbol('reload')
+  this.$parent.$forceUpdate()
+  ```
 - [x] support reload child component
   - since setup component has closed instance, `$reload` is not exposed, so we can't just use `$refs.xxx.$reload`: https://github.com/vuejs/core/pull/5022#issuecomment-1113325348

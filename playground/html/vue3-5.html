@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vue 3.4</title>
+  <title>Vue 3.5</title>
   <script type="importmap">
     {
       "imports": {
@@ -22,6 +22,7 @@
     const app = createApp({
       template: `
       <div>
+        <NeedReload />
         <NeedReload ref="refNeedReload" />
         <button @click="reload">reload</button>
       </div>
@@ -36,7 +37,7 @@
       }
     })
     app.component('NeedReload', {
-      template: `<div>NeedReload：{{ Date.now() }}</div>`
+      template: `<div>now: {{ Date.now() }}</div>`
     })
     app.mount('#app')
   </script>
