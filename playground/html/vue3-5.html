@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue 3.4</title>
+  <script>window.process = { env: {} }</script>
+  <script type="importmap">
+    {
+      "imports": {
+        "vue": "https://unpkg.com/vue@3.5.0/dist/vue.esm-browser.js",
+        "vue-reload": "https://unpkg.com/vue-reload@1.1.0/dist/index.js"
+      }
+    }
+  </script>
+</head>
+<body>
+  <div id="app">{{ message }}</div>
+  <script type="module">
+    import { ref, createApp } from 'vue'
+    import { useReload } from 'vue-reload'
+
+    const app = createApp({
+      template: `
+      <div>
+        <NeedReload ref="refNeedReload" />
+        <button @click="reload">reload</button>
+      </div>
+      `,
+      setup() {
+        const refNeedReload = ref()
+        const reload = useReload(refNeedReload)
+        return {
+          refNeedReload,
+          reload
+        }
+      }
+    })
+    app.component('NeedReload', {
+      template: `<div>NeedReload：{{ Date.now() }}</div>`
+    })
+    app.mount('#app')
+  </script>
+</body>
+</html>
