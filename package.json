@@ -6,12 +6,12 @@
   "sideEffects": false,
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
+      "types": "./dist/vue-reload.d.ts",
+      "import": "./dist/vue-reload.js"
     }
   },
-  "types": "dist/index.d.ts",
-  "module": "dist/index.js",
+  "types": "dist/vue-reload.d.ts",
+  "module": "dist/vue-reload.js",
   "files": [
     "dist"
   ],

@@ -1,12 +1,6 @@
 import { getCurrentInstance, version, type Plugin, type ComponentPublicInstance, type ComputedRef, type Ref } from 'vue'
 import { reload } from './reload'
 
-declare module 'vue' {
-  interface ComponentCustomProperties {
-    $reload: () => void
-  }
-}
-
 const _reload = (self: any) => reload(() => (self && { ...self, '$': { vnode: self.$vnode } }))
 function boot<Fn extends () => any>(v2: Fn, v3: Fn): ReturnType<Fn> | void {
   if (version.startsWith('2.')) return v2()
