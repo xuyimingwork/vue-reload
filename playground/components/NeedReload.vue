@@ -7,7 +7,7 @@
 <template>
   <div>
     {{ Date.now() }}
-    <button @click="$reload()">$reload</button>
-    <button @click="reload()">reload</button>
+    <button @click="$reload()">$reload by plugin</button>
+    <button @click="reload()">reload from child</button>
   </div>
 </template> 

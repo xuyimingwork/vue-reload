@@ -18,6 +18,7 @@
   "scripts": {
     "start": "vite",
     "test": "vitest",
+    "test:coverage": "vitest run --coverage",
     "build": "vite build",
     "prepublishOnly": "run-s build"
   },
@@ -45,6 +46,7 @@
     "@tsconfig/node22": "^22.0.2",
     "@types/node": "^24.3.0",
     "@vitejs/plugin-vue": "^6.0.1",
+    "@vitest/coverage-v8": "^3.2.4",
     "@vue/test-utils": "^2.4.6",
     "@vue/tsconfig": "^0.8.1",
     "jsdom": "^26.1.0",

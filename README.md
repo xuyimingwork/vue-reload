@@ -29,7 +29,7 @@ app.use(createReload())
 app.mount('#app')
 ```
 
-then, you can just call `$reload()` in any non root component template, like:
+then, you can just call `$reload()` in any component template, like:
 
 ```vue
 <template>
@@ -49,8 +49,22 @@ then, you can just call `$reload()` in any non root component template, like:
 </template>
 ```
 
+### from parent
+
+```vue
+<script setup lang="ts">
+  import { useReload } from 'vue-reload';
+  const refChildComponent = useTemplateRef('refChildComponent')
+  const reloadChildComponent = useReload(refChildComponent)
+</script>
+<template>
+  <ChildComponent ref="refChildComponent" />
+  <button @click="reloadChildComponent()">reloadChildComponent</button>
+</template>
+```
+
 ## Next
 
 - [ ] add support for vue2
-- [ ] support reload child component
+- [x] support reload child component
   - since setup component has closed instance, `$reload` is not exposed, so we can't just use `$refs.xxx.$reload`: https://github.com/vuejs/core/pull/5022#issuecomment-1113325348
