@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Vue2</title>
   <script>window.process = { env: {} }</script>
   <script type="importmap">
     {
       "imports": {
-        "vue": "https://unpkg.com/vue@2/dist/vue.esm.js",
+        "vue": "https://unpkg.com/vue@2.7.16/dist/vue.esm.js",
         "vue-reload": "https://unpkg.com/vue-reload@1.1.0/dist/index.js"
       }
     }
@@ -37,7 +37,12 @@
       `,
       setup() {
         const refNeedReload = ref()
-        const reload = useReload(refNeedReload)
+        const reload = function() {
+          console.log('refNeedReload', refNeedReload.value)
+          // TODO: move to reload
+          refNeedReload.value.$vnode.key = 'refresh'
+          refNeedReload.value.$parent.$forceUpdate()
+        }
         return {
           refNeedReload,
           reload
