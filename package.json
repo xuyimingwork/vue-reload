@@ -6,11 +6,15 @@
   "sideEffects": false,
   "exports": {
     ".": {
-      "types": "./dist/vue-reload.d.ts",
+      "types": "./dist/index.d.ts",
       "import": "./dist/vue-reload.js"
+    },
+    "./compat": {
+      "types": "./dist/index.compat.d.ts",
+      "import": "./dist/vue-reload.compat.js"
     }
   },
-  "types": "dist/vue-reload.d.ts",
+  "types": "dist/index.d.ts",
   "module": "dist/vue-reload.js",
   "files": [
     "dist"

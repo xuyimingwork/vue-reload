@@ -19,9 +19,14 @@ export default defineConfig({
   },
   build: {
     lib: {
-      entry: fileURLToPath(new URL('./src/index.ts', import.meta.url)),
+      entry: [
+        fileURLToPath(new URL('./src/index.ts', import.meta.url)),
+        fileURLToPath(new URL('./src/index.compat.ts', import.meta.url)),
+      ],
       formats: ['es'],
-      fileName: 'vue-reload',
+      fileName: (format, entry) => entry === 'index' ? `vue-reload.js`
+        : entry === 'index.compat' ? 'vue-reload.compat.js'
+        : `${entry}.js`,
     },
     rollupOptions: {
       external: ['vue']
