@@ -53,13 +53,16 @@ then, you can just call `$reload()` in any component template, like:
 
 ```vue
 <script setup lang="ts">
+  import { useTemplateRef } from 'vue';
   import { useReload } from 'vue-reload';
-  const refChildComponent = useTemplateRef('refChildComponent')
-  const reloadChildComponent = useReload(refChildComponent)
+  import Child from './Child.vue'
+
+  const refChild = useTemplateRef('refChild')
+  const reloadChild = useReload(refChild)
 </script>
 <template>
-  <ChildComponent ref="refChildComponent" />
-  <button @click="reloadChildComponent()">reloadChildComponent</button>
+  <Child ref="refChild" />
+  <button @click="reloadChild()">reloadChild</button>
 </template>
 ```
 

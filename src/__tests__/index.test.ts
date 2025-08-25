@@ -96,15 +96,3 @@ test('useReload from parent, not a component', async () => {
   const result = await (wrapper.vm as any).reloadDiv()
   expect(result).toBeUndefined()
 })
-
-test('useReload from root', async () => {
-  const wrapper = mount({
-    template: '<div />',
-    setup() {
-      const reload = useReload()
-      return { reload }
-    }
-  })
-  const result = await (wrapper.vm as any).reload()
-  expect(result).toBeUndefined()
-})

@@ -6,9 +6,9 @@
   import { useReload } from '../src';
 
   const refChildClosed = useTemplateRef('refChildClosed')
-  const refChildExposed = useTemplateRef('refChildExposed')
-
   const reloadChildClosed = useReload(refChildClosed)
+
+  const refChildExposed = useTemplateRef('refChildExposed')
   const reloadChildExposed = useReload(refChildExposed)
 </script>
 
