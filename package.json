@@ -34,7 +34,8 @@
     "reload",
     "refresh",
     "component",
-    "vueuse"
+    "vueuse",
+    "hook"
   ],
   "author": "Xu Yiming",
   "license": "MIT",
