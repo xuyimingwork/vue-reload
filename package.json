@@ -1,9 +1,14 @@
 {
   "name": "vue-reload",
+  "version": "1.2.1",
   "description": "make reload vue component easier",
-  "version": "1.2.0",
   "type": "module",
   "sideEffects": false,
+  "main": "dist/vue-reload.js",
+  "module": "dist/vue-reload.js",
+  "unpkg": "dist/vue-reload.js",
+  "jsdelivr": "dist/vue-reload.js",
+  "types": "dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -14,8 +19,6 @@
       "import": "./dist/vue-reload.compat.js"
     }
   },
-  "types": "dist/index.d.ts",
-  "module": "dist/vue-reload.js",
   "files": [
     "dist"
   ],
