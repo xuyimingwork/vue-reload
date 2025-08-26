@@ -1,6 +1,6 @@
 # vue-reload
 
-reload current vue component（support vue2.7 and vue3）
+Reload a vue component (support vue2.7 and vue3), make it go through lifecycle again.
 
 ## Install
 
