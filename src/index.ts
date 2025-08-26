@@ -1,4 +1,4 @@
-import { getCurrentInstance, type Plugin, type ComponentPublicInstance, type ComputedRef, type Ref } from 'vue'
+import { getCurrentInstance, type ComponentPublicInstance, type Plugin, type Ref } from 'vue'
 import { reload } from './reload'
 
 declare module 'vue' {
@@ -9,7 +9,7 @@ declare module 'vue' {
 
 export function createReload(): Plugin {
   return {
-    install(app) {
+    install(app: any) {
       app.config.globalProperties.$reload = function() {
         return reload(this as ComponentPublicInstance)
       }
@@ -17,7 +17,7 @@ export function createReload(): Plugin {
   }
 }
 
-export function useReload(ref?: Ref | ComputedRef) {
+export function useReload(ref?: Ref) {
   const instance = getCurrentInstance()
   if (!ref) return () => reload(instance?.proxy)
   return () => reload(() => ref.value?.$?.proxy)

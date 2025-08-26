@@ -9,7 +9,7 @@
     {
       "imports": {
         "vue": "https://unpkg.com/vue@2.7.0/dist/vue.esm.js",
-        "vue-reload": "../../dist/index.js"
+        "vue-reload": "../../dist/vue-reload.compat.js"
       }
     }
   </script>
@@ -18,8 +18,21 @@
   <div id="app">{{ message }}</div>
   <script type="module">
     import Vue from 'vue'
+    import { useReload } from 'vue-reload'
     Vue.component('NeedReload', {
-      template: `<div>now: {{ Date.now() }}</div>`
+      template: `
+        <div>
+          now: {{ Date.now() }}
+          <button @click="reload">reload self</button>
+          <button @click="$reload()">reload self</button>
+        </div>
+      `,
+      setup() {
+        const reload = useReload()
+        return {
+          reload
+        }
+      }
     })
   </script>
   <script type="module">
@@ -35,8 +48,8 @@
       <div>
         <NeedReload />
         <NeedReload ref="refNeedReload" />
-        <button @click="reload">reload</button>
-        <button @click="reloadFromPlugin">$reload</button>
+        <button @click="reload">reload from parent</button>
+        <button @click="$refs.refNeedReload.$reload()">$reload from parent</button>
       </div>
       `,
       setup() {
@@ -47,11 +60,6 @@
           reload
         }
       },
-      methods: {
-        reloadFromPlugin() {
-          this.$refs.refNeedReload.$reload()
-        }
-      }
     })
   </script>
 </body>
