@@ -33,6 +33,8 @@ app.use(createReload())
 app.mount('#app')
 ```
 
+> For vue 2.7: `Vue.use(createReload())`
+
 then, you can just call `$reload()` in any component template, like:
 
 ```vue
@@ -40,6 +42,8 @@ then, you can just call `$reload()` in any component template, like:
   <button @click="$reload()">$reload</button>
 </template>
 ```
+
+> `$reload` use `this` as component instance, so do NOT use like `<button @click="$reload">$reload</button>`
 
 ### as hook
 
