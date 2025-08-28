@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue 2.6</title>
+  <script>window.process = { env: {} }</script>
+  <script type="importmap">
+    {
+      "imports": {
+        "vue": "https://unpkg.com/vue@2.6.0/dist/vue.esm.js",
+        "vue-reload": "../../dist/vue-reload.compat.js"
+      }
+    }
+  </script>
+</head>
+<body>
+  <div id="app">{{ message }}</div>
+  <script type="module">
+    import Vue from 'vue'
+    import { useReload } from 'vue-reload'
+    Vue.component('NeedReload', {
+      template: `
+        <div>
+          now: {{ Date.now() }}
+          <button @click="$reload()">reload self</button>
+        </div>
+      `
+    })
+  </script>
+  <script type="module">
+    import Vue from 'vue'
+    import { createReload } from 'vue-reload'
+
+    Vue.use(createReload())
+
+    new Vue({
+      el: '#app',
+      template: `
+      <div>
+        <NeedReload />
+        <NeedReload ref="refNeedReload" />
+        <button @click="$refs.refNeedReload.$reload()">$reload from parent</button>
+      </div>
+      `,
+    })
+  </script>
+</body>
+</html>

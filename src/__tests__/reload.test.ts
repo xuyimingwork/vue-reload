@@ -31,6 +31,33 @@ test('normal component', async () => {
   expect(init).toBeCalledTimes(2)
 })
 
+test('reload grand child component', async () => {
+  const data = { init: () => {} }
+  const init = vi.spyOn(data, 'init')
+  expect(init).not.toBeCalled()
+  const GrandChild = {
+    template: '<div>GrandChild</div>',
+    setup() {
+      data.init()
+    }
+  }
+  const Child = {
+    template: '<div>Child<GrandChild /></div>',
+    components: { GrandChild }
+  }
+  const wrapper = mount({
+    template: '<Child ref="refNeedReload" />',
+    setup() {
+      const refNeedReload = ref()
+      return { refNeedReload, reload: () => reload(refNeedReload.value) }
+    },
+    components: { Child }
+  })
+  expect(init).toBeCalled()
+  await (wrapper.vm as any)?.reload()
+  expect(init).toBeCalledTimes(2)
+})
+
 test('root component', async () => {
   const wrapper = mount({
     template: '<div />',

@@ -1,5 +1,5 @@
-import { getCurrentInstance, type ComponentPublicInstance, type Plugin, type Ref } from 'vue'
-import { reload } from './reload'
+import { getCurrentInstance, nextTick, type Plugin, type Ref } from 'vue'
+import { createHook, createPlugin } from '@/v3'
 
 declare module 'vue' {
   interface ComponentCustomProperties {
@@ -8,17 +8,7 @@ declare module 'vue' {
 }
 
 export function createReload(): Plugin {
-  return {
-    install(app: any) {
-      app.config.globalProperties.$reload = function() {
-        return reload(this as ComponentPublicInstance)
-      }
-    }
-  }
+  return createPlugin({ nextTick })
 }
 
-export function useReload(ref?: Ref) {
-  const instance = getCurrentInstance()
-  if (!ref) return () => reload(instance?.proxy)
-  return () => reload(() => ref.value?.$?.proxy)
-}
+export const useReload: (ref?: Ref) => () => Promise<void> = createHook({ getCurrentInstance, nextTick })
