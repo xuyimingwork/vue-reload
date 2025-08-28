@@ -43,7 +43,7 @@ then, you can just call `$reload()` in any component template, like:
 </template>
 ```
 
-> `$reload` use `this` as component instance, so do **NOT** use like `<button @click="$reload">$reload</button>`
+> **Don't** use like `<button @click="$reload">$reload</button>`, since `$reload` use `this` as component instance
 
 ### in setup
 
@@ -74,7 +74,7 @@ then, you can just call `$reload()` in any component template, like:
 </template>
 ```
 
-> If you register `$reload` globally **AND** use vue 2.7, you can just call `$refs.refChild.$reload()`.
+> If you register `$reload` globally **AND** use vue 2.x, you can just call `$refs.refChild.$reload()`.
 > Since vue3 introduced [closed instance](https://github.com/vuejs/core/pull/5022#issuecomment-1113325348), can't access global property from ref, we should use composable.
 
 ## Next
