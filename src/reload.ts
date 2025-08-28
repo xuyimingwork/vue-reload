@@ -1,5 +1,5 @@
 import type { Context } from "@/types"
-import { type ComponentPublicInstance } from "vue"
+import type { ComponentPublicInstance } from "vue"
 
 export function reload(instance: ComponentPublicInstance | null | undefined, context?: Context): Promise<void>
 export function reload(getInstance: () => ComponentPublicInstance | null | undefined, context?: Context): Promise<void>
