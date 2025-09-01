@@ -1,3 +1,5 @@
+English | [简体中文](./docs/zh-cn/README.md)
+
 # vue-reload
 
 Reload a vue component (support vue2.3+ and vue3), make it go through lifecycle again.
