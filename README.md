@@ -4,6 +4,8 @@ English | [简体中文](./docs/zh-cn/README.md)
 
 Reload a vue component (support vue2.3+ and vue3), make it go through lifecycle again.
 
+> E.g. you have a detail component accept id prop and do some complex init and fetch data and render during lifecycle, after submit some changes to server, you may want detail component redo all things again. that's vue-reload good at.
+
 ## Install
 
 ```sh
